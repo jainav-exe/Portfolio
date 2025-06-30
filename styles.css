@@ -1,0 +1,1111 @@
+/* Batman Theme Portfolio - Clean CSS */
+:root {
+    --batman-black: #0a0a0a;
+    --batman-yellow: #ffd700;
+    --batman-dark: #181818;
+    --batman-gray: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--batman-black);
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    /* keep default cursor for now */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+#main-nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+#main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1001;
+    pointer-events: auto;
+}
+
+#main-nav a:hover,
+#main-nav a.active {
+    color: var(--batman-yellow);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+#main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--batman-yellow);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+#main-nav a:hover::after,
+#main-nav a.active::after {
+    width: 80%;
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.section.visible {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--batman-yellow);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--batman-yellow);
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 20;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffd700" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 30;
+    position: relative;
+}
+
+/* Profile Photo */
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto 2rem;
+    border: 4px solid var(--batman-yellow);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.profile-photo::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--batman-yellow), #fff, var(--batman-yellow));
+    border-radius: 50%;
+    z-index: -1;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.highlight {
+    color: var(--batman-yellow);
+    text-shadow: 0 0 10px var(--batman-yellow);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+/* Projects Section */
+#projects-section {
+    background: var(--batman-dark);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 15;
+    pointer-events: auto;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+    border-color: var(--batman-yellow);
+}
+
+.project-content h3 {
+    color: var(--batman-yellow);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Oswald', sans-serif;
+}
+
+.project-content p {
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background: var(--batman-yellow);
+    color: var(--batman-black);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    z-index: 16;
+    position: relative;
+    pointer-events: auto;
+}
+
+.project-link:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.project-link i {
+    font-size: 1.1em;
+}
+
+/* About Section */
+#about-section {
+    background: var(--batman-black);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text h3 {
+    color: var(--batman-yellow);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Oswald', sans-serif;
+}
+
+.about-text p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.x-link, .github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--batman-yellow);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    z-index: 16;
+    position: relative;
+    pointer-events: auto;
+}
+
+.x-link:hover, .github-link:hover {
+    background: var(--batman-yellow);
+    color: var(--batman-black);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.x-link i, .github-link i {
+    font-size: 1.2em;
+}
+
+/* GitHub Section */
+#github-contributions {
+    background: var(--batman-dark);
+}
+
+.github-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    position: relative;
+    z-index: 15;
+    pointer-events: auto;
+}
+
+.github-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.github-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.github-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--batman-yellow);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.github-info h3 {
+    color: var(--batman-yellow);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Oswald', sans-serif;
+}
+
+.github-info p {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.github-stats {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--batman-yellow);
+    font-family: 'Oswald', sans-serif;
+}
+
+.stat-label {
+    color: #ccc;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.github-calendar-container {
+    margin-bottom: 2rem;
+}
+
+.github-chart {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* GitHub Section - New Graph Styles */
+.github-graph-container {
+    margin: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 16;
+    pointer-events: auto;
+}
+
+.github-graph-container:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.github-activity-graph {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+}
+
+/* Remove unused calendar styles */
+.github-calendar-container,
+.github-graph-container {
+    position: relative;
+    z-index: 16;
+    pointer-events: auto;
+}
+
+.github-stats {
+    margin-bottom: 2rem;
+}
+
+.github-actions {
+    text-align: center;
+}
+
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: var(--batman-yellow);
+    color: var(--batman-black);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+    z-index: 17;
+    position: relative;
+    pointer-events: auto;
+}
+
+.github-btn:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.github-btn i {
+    font-size: 1.3em;
+}
+
+/* Loading state */
+.github-loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--batman-yellow);
+}
+
+.github-loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--batman-yellow);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive design for GitHub section */
+@media (max-width: 768px) {
+    .github-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .github-stats {
+        justify-content: center;
+    }
+    
+    .stat-item {
+        padding: 0.8rem 1.2rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .github-chart-container {
+        padding: 1rem;
+    }
+    
+    .github-chart {
+        width: 100%;
+        border: none;
+        display: block;
+    }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--batman-yellow);
+    color: var(--batman-black);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    pointer-events: auto;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+}
+
+.bat-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--batman-yellow);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.7;
+    transition: transform 0.1s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    #main-nav ul {
+        gap: 1rem;
+    }
+    
+    #main-nav a {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+    
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .github-container {
+        padding: 1rem;
+    }
+    
+    .github-chart-container {
+        padding: 0.5rem;
+        min-height: 350px;
+    }
+    
+    .github-chart {
+        width: 100%;
+        border: none;
+        display: block;
+    }
+    
+    .calendar-day {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .contribution-week {
+        height: 10px;
+        gap: 2px;
+    }
+    
+    .calendar-days {
+        width: 20px;
+        font-size: 8px;
+    }
+    
+    .day-label {
+        height: 10px;
+        padding-right: 2px;
+    }
+    
+    .calendar-months {
+        font-size: 8px;
+    }
+    
+    .legend-item {
+        width: 8px;
+        height: 8px;
+    }
+} 
+
+.bat-signal-spotlight {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 90;
+    transition: filter 0.3s, opacity 0.3s, top 0.2s, left 0.2s;
+    filter: drop-shadow(0 0 40px #ffd70088) drop-shadow(0 0 80px #ffd70044);
+    opacity: 0.85;
+    cursor: pointer;
+    will-change: transform, filter, top, left;
+}
+
+.bat-signal-svg {
+    display: block;
+    pointer-events: none;
+}
+
+body.night-mode {
+    background: #07080a !important;
+}
+
+body.night-mode .bat-signal-spotlight {
+    filter: drop-shadow(0 0 80px #ffd700cc) drop-shadow(0 0 120px #ffd70099);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .bat-signal-spotlight {
+        width: 48px;
+        height: 48px;
+        top: 16%;
+    }
+}
+
+.hero-section {
+    position: relative;
+} 
+
+.flying-bats-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 3000;
+}
+
+.bat {
+    position: absolute;
+    width: 48px;
+    height: 24px;
+    opacity: 0.85;
+    pointer-events: none;
+    will-change: transform, opacity;
+    z-index: 3001;
+    animation: fly-bat linear forwards;
+}
+
+.bat svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@keyframes fly-bat {
+    0% {
+        opacity: 0;
+        transform: translateX(-60px) scale(0.8) rotate(-10deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100vw) scale(1.1) rotate(10deg);
+    }
+}
+
+body.night-mode .bat {
+    opacity: 1;
+} 
+
+/* Gotham Skyline - Static, with glowing windows */
+.gotham-skyline-parallax {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 140px;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.skyline-layer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.skyline-back { z-index: 1; opacity: 0.7; }
+.skyline-mid { z-index: 2; opacity: 0.85; }
+.skyline-front { z-index: 3; opacity: 1; }
+
+/* Glowing windows animation */
+.skyline-mid svg rect[fill="#ffd700"] {
+    animation: window-glow 3s ease-in-out infinite alternate;
+}
+@keyframes window-glow {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Clouds - only animate on event, not continuous */
+.skyline-clouds {
+    position: absolute;
+    left: 0;
+    bottom: 60px;
+    width: 100vw;
+    height: 60px;
+    pointer-events: none;
+    z-index: 10;
+}
+.cloud {
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 40px;
+    opacity: 0.13;
+    background: radial-gradient(ellipse at 40% 60%, #fff 60%, transparent 100%);
+    border-radius: 50%;
+    will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+    .gotham-skyline-parallax, .skyline-layer {
+        height: 80px;
+        min-height: 0;
+    }
+    .skyline-clouds {
+        height: 30px;
+        bottom: 30px;
+    }
+    .cloud {
+        width: 60px;
+        height: 20px;
+    }
+} 
+
+.modal-overlay {
+    display: none;
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(10,10,10,0.92);
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+.modal-overlay.active {
+    display: flex;
+    pointer-events: auto;
+}
+/* DEBUG: Uncomment to test pointer events
+* {
+  pointer-events: auto !important;
+}
+*/
+.modal-content {
+    position: relative;
+    background: #181818;
+    border-radius: 18px;
+    box-shadow: 0 0 40px #000, 0 0 60px #ffd70033;
+    padding: 2.5rem 2rem 2rem 2rem;
+    min-width: 340px;
+    max-width: 95vw;
+    width: 400px;
+    overflow: visible;
+    text-align: center;
+    z-index: 4001;
+    pointer-events: auto;
+}
+.modal-batsignal-bg {
+    position: absolute;
+    top: -40px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.7;
+    animation: batsignal-pulse 2.5s infinite alternate;
+}
+@keyframes batsignal-pulse {
+    0% { filter: blur(0px) brightness(1); }
+    100% { filter: blur(2px) brightness(1.2); }
+}
+.modal-close {
+    position: absolute;
+    top: 12px; right: 18px;
+    background: none;
+    border: none;
+    color: #ffd700;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.2s;
+    pointer-events: auto;
+}
+.modal-close:hover {
+    color: #fff;
+}
+.modal-quote {
+    font-size: 1.1rem;
+    color: #ffd700;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    z-index: 2;
+    position: relative;
+}
+.modal-form label {
+    display: block;
+    color: #ffd700;
+    text-align: left;
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+}
+.modal-form input,
+.modal-form textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    margin-top: 0.3rem;
+    margin-bottom: 1.1rem;
+    border-radius: 8px;
+    border: 1.5px solid #ffd70055;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.modal-form input:focus,
+.modal-form textarea:focus {
+    border: 1.5px solid #ffd700;
+    box-shadow: 0 0 8px #ffd70055;
+}
+.modal-submit-btn {
+    background: var(--batman-yellow);
+    color: var(--batman-black);
+    border: none;
+    border-radius: 25px;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 18px #ffd70033;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    pointer-events: auto;
+}
+.modal-submit-btn:hover {
+    background: #fff;
+    color: #181818;
+    transform: translateY(-2px) scale(1.04);
+}
+.modal-bat-icon {
+    font-size: 1.2em;
+}
+.modal-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    z-index: 3;
+}
+.modal-success.active {
+    display: flex;
+}
+.modal-batsignal-flash {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffd700 0%, #ffd70088 60%, transparent 100%);
+    animation: batsignal-flash 0.7s linear 1;
+}
+@keyframes batsignal-flash {
+    0% { opacity: 0; transform: scale(0.7); }
+    40% { opacity: 1; transform: scale(1.1); }
+    80% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.7); }
+}
+.modal-success-text {
+    color: #ffd700;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 0 0 8px #ffd70088;
+    text-align: center;
+}
+@media (max-width: 500px) {
+    .modal-content {
+        min-width: 0;
+        width: 98vw;
+        padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+    }
+    .modal-batsignal-bg {
+        top: -30px;
+    }
+} 
+
+/* Mobile touch improvements */
+.touch-device a,
+.touch-device button,
+.touch-device .project-card,
+.touch-device .github-btn {
+    -webkit-tap-highlight-color: rgba(255, 215, 0, 0.3);
+    touch-action: manipulation;
+}
+
+/* Ensure all interactive elements are clickable */
+a, button, .project-card, .github-btn, .modal-close, .modal-submit-btn {
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+    pointer-events: auto !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Fix for any potential overlay issues */
+.flying-bats-container,
+.gotham-skyline-parallax,
+.custom-cursor {
+    pointer-events: none !important;
+}
+
+/* Ensure navigation and main content are always clickable */
+#main-nav,
+main,
+.section,
+.container {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 50;
+}
+
+/* Additional button improvements */
+.project-link,
+.github-btn,
+.x-link,
+.github-link,
+#book-call-btn,
+#back-to-top,
+.modal-close,
+.modal-submit-btn {
+    position: relative;
+    z-index: 200 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Prevent text selection on buttons */
+button, a {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Ensure buttons have proper focus states */
+button:focus,
+a:focus {
+    outline: 2px solid var(--batman-yellow);
+    outline-offset: 2px;
+}
+
+/* Improve button responsiveness */
+.project-card,
+.github-container {
+    position: relative;
+    z-index: 150;
+    pointer-events: auto !important;
+} 
